@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود مدیر - BingoBaz</title>
+  <style>
+    body {
+      background: #2e003e;
+      color: #00ff99;
+      font-family: Tahoma, sans-serif;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    .form {
+      background: #3c007a;
+      padding: 30px 20px;
+      border-radius: 12px;
+      display: inline-block;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .btn {
+      background: #00ff99;
+      color: #2e003e;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ورود مدیر سیستم</h1>
+
+  <div class="form">
+    <input type="password" id="adminPass" placeholder="رمز مدیریت">
+    <button class="btn" onclick="login()">ورود</button>
+    <div class="error" id="errorBox"></div>
+  </div>
+
+  <script>
+    const ADMIN_PASSWORD = "bingo123"; // رمز عبور مدیر - بعداً قابل تغییر
+
+    function login() {
+      const pass = document.getElementById('adminPass').value.trim();
+      const errorBox = document.getElementById('errorBox');
+
+      if (pass === ADMIN_PASSWORD) {
+        localStorage.setItem('bingobaz_admin', '1');
+        window.location.href = 'admin-dashboard.html';
+      } else {
+        errorBox.innerText = 'رمز اشتباه است.';
+      }
+    }
+  </script>
+
+</body>
+</html>
